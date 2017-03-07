@@ -14,4 +14,4 @@ var GreeterMessage = React.createClass({
   }
 });
 
-modules.exports =  GreeterMessage;
+module.exports =  GreeterMessage;
