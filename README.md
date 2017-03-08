@@ -4,3 +4,5 @@ This is a big dump of code mostly in react, react-dom. I push a lot of things I 
 
 * HelloReact - a simple form application
 * HelloReactWebPack - a simple form application using Webpack and Babel
+* ReactBoilerplate - a very simple boilerplate for ES6, react, react-dom, using babela and webpack
+* step-redux-youtube-player - React-Redux Youtube Player for Searching Using Redux, Promise and Axios
