@@ -10,3 +10,7 @@
 .media:first-child {
   margin-top: 0rem !important;
 }
+
+.margin-top {
+  margin-top: 1rem;
+}

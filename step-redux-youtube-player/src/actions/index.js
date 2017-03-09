@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyDBw1i3EMHJGQdrzV2VV5Wmkm7so-TlrS4';
+const API_KEY = '-TlrS4';
 
 import axios from 'axios';
 

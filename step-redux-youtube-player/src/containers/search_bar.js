@@ -8,6 +8,7 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = ({
+      searchTerm: '',
       term: '',
       selectedVideo: '',
       videos: []
@@ -20,9 +21,11 @@ class SearchBar extends Component {
   handleInputChange(event) {
     this.setState({ term: event.target.value });
   }
+
   onFormSubmit(event) {
     event.preventDefault();
     this.props.fetchVideos(this.state.term);
+    this.setState({searchTerm: this.state.term});
   }
 
   render() {
@@ -36,16 +39,13 @@ class SearchBar extends Component {
             </span>
           </form>
         </div>
-        <Alert term={this.props.term}/>
+        <div className="row no-gutters margin-top">
+          <div className="col-md-12">
+            <Alert term={this.state.searchTerm}/>
+          </div>
+        </div>
       </div>
     )
-  }
-}
-
-function mapStateToProps(state) {
-  console.log(state);
-  return {
-    term: state.term
   }
 }
 
@@ -53,4 +53,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchVideos }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(SearchBar);
