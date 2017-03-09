@@ -8,8 +8,10 @@ export default class App extends Component {
     return (
       <div>
         <SearchBar />
-        <VideoDetail />
-        <VideoList />
+        <div className="row no-gutters">
+          <VideoDetail />
+          <VideoList />
+        </div>
       </div>
     );
   }

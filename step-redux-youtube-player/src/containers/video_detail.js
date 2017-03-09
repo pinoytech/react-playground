@@ -2,32 +2,39 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class VideoDetail extends Component {
+
   render() {
-    if (typeof this.props.videos[0] == 'undefined') {
-      return <div>Loading...</div>;
+
+    if (this.props.selectedVideo == null || typeof this.props.selectedVideo == 'undefined') {
+      return <div className="col-md-7">Loading...</div>;
     }
 
-    const videoItem = this.props.videos[0].items[0]
+    const videoItem = this.props.selectedVideo
 
     return (
-      <div className="video-detail col-md-8">
-        <div className="embed-responsive embed-responsive-16by9">
-          <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${videoItem.id.videoId}`}></iframe>
-        </div>
-        <div className="details">
-          <div>Title
+      <div className="col-md-7">
+        <figure className="figure">
+          <div className="figure-img img-fluid rounded embed-responsive embed-responsive-16by9">
+            <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${videoItem.id.videoId}`}></iframe>
           </div>
-          <div>
-            Description
-          </div>
-        </div>
+          <figcaption className="figure-caption text-left">
+            <div>
+              <h4>Title: {videoItem.snippet.title} </h4>
+            </div>
+            <div>
+              <p>{videoItem.snippet.description}</p>
+            </div>
+          </figcaption>
+        </figure>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { videos: state.videos }
+  return {
+    selectedVideo: state.selectedVideo
+  }
 }
 
 export default connect(mapStateToProps)(VideoDetail);

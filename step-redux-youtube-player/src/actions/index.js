@@ -1,8 +1,9 @@
-const API_KEY = 'APIKEY-TlrS4';
+const API_KEY = 'AIzaSyDBw1i3EMHJGQdrzV2VV5Wmkm7so-TlrS4';
 
 import axios from 'axios';
 
 export const FETCH_VIDEOS = 'FETCH_VIDEOS';
+export const SELECT_VIDEO = 'SELECT_VIDEO';
 
 export function fetchVideos(term) {
 
@@ -12,5 +13,12 @@ export function fetchVideos(term) {
   return {
     type: FETCH_VIDEOS,
     payload: request
+  }
+}
+
+export function selectVideo(video) {
+  return {
+    type: SELECT_VIDEO,
+    payload: video
   }
 }
