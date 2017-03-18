@@ -1,0 +1,62 @@
+.container {
+    padding-top: 3rem;
+}
+
+.row {
+    margin-bottom: 1.5rem;
+}
+
+form {
+    text-align: center;
+}
+
+.btn,
+.btn:disabled:hover {
+    background-color: #009688;
+    border-color: #009688;
+    margin-left: 2rem;
+}
+.btn:hover {
+    background-color: #00796B;
+    border-color: #00796B;
+}
+.form-control:focus {
+    border-color: #009688;
+}
+
+i {
+    padding-right: .5rem;
+}
+
+h5 {
+    color: #CCC;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.card {
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.card,
+.card-footer {
+    background-color: #FFFFA5;
+    border: none;
+}
+
+.card-footer {
+    text-align: right;
+}
+
+.card.completed,
+.card.completed .card-footer,
+.card.completed i{
+    background-color: #EEE;
+    color: #CCC;
+}
+
+i {
+    color: #CC0000;
+    padding-right: .5rem;
+}
