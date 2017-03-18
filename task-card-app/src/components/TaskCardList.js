@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import TaskCard from './TaskCard';
 
@@ -25,6 +25,10 @@ class TaskCardList extends Component {
       </div>
     )
   };
+}
+
+TaskCardList.propTypes = {
+  tasks: PropTypes.array.isRequired
 }
 
 function mapStateToProps(state) {

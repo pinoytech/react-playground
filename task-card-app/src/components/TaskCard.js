@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { toggleTask, deleteTask } from '../actions/index';
 
@@ -40,6 +40,11 @@ class TaskCard extends Component {
       </div>
     )
   }
+}
+TaskCard.propTypes = {
+  toggleTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  task: PropTypes.object.isRequired
 }
 
 export default connect(null, { toggleTask, deleteTask })(TaskCard);
