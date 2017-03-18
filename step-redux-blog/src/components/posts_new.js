@@ -26,7 +26,7 @@ class PostsNew extends Component {
       <div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <h3>Create A New Post</h3>
-          <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
+          <div className={`form-group ${title.touched && title.invalid && 'has-danger'}`}>
             <label htmlFor="title">Title</label>
             <input type="text" className="form-control" {...title} />
             {/*<div className="text-help">{title.touched ? title.error : ''}</div>*/}
