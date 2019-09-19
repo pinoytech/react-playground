@@ -9,3 +9,4 @@ This is a big dump of code mostly in react, react-dom. I push a lot of things I 
 * gravatar - a very simple app that shows a gravatar image depending on the email you typed
 * step-redux-blog - A blog showing the basics of Adding, Deleting and Showing data from a remote server
 * task-card-app - A simple simple app for a todo list
+* pokemon-api-speedcoding - A really simple app connecting to the pokedex api (Seems to be a nice project. Maybe I can do a more complex app with this)

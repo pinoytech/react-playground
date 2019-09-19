@@ -1,0 +1,8 @@
+{
+  "short_name": "Pokemon Pokedex",
+  "name": "A Simple Paginated Pokemon Pokedex",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
