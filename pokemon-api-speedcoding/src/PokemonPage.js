@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import {
   Link
 } from 'react-router-dom';
@@ -9,29 +9,47 @@ import Spinner from './Spinner';
 import Title from './Title';
 import PokemonImage from './PokemonImage';
 
+function pokeReducer(state, action) {
+  switch(action.type) {
+    case 'FETCH_SUCCESS':
+      return { ...state, pokemon: action.payload, error: '', loading: false};
+    case 'FETCH_ERROR':
+      return { ...state, pokemon: action.payload, error: action.error, loading: false };
+  }
+}
+
 export default function PokemonPage({ match }) {
   const { params: { slug }} = match;
 
-  const [pokemon, setPokemon] = useState();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState()
+  const [state, dispatch] = useReducer(pokeReducer, {
+    loading: true,
+    error: '',
+    pokemon: null
+  });
 
   useEffect(() => {
     let cancel;
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${slug}`, {
-      cancelToken: new axios.CancelToken(c => cancel = c)
-    })
-    .then(res => {
-      setLoading(false);
-      setPokemon(res.data);
-    })
-    .catch(error => {
-      setLoading(false);
-      setError(error.response.data)
-    })
-
-    return () => cancel();
+    const fetchData = async() => {
+      await axios.get(`https://pokeapi.co/api/v2/pokemon/${slug}`, {
+        cancelToken: new axios.CancelToken(c => cancel = c)
+      })
+      .then(res => {
+        // setLoading(false);
+        // setPokemon(res.data);
+        dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+      })
+      .catch(error => {
+        // setLoading(false);
+        // setError(error.response.data)
+        dispatch({ type: 'FETCH_ERROR', payload: null, error: error.response.data })
+      })
+  
+      return () => cancel();
+    }
+    fetchData();
   }, [slug])
+
+  const { loading, pokemon, error } = state;
 
   if (loading) return <Spinner />;
 

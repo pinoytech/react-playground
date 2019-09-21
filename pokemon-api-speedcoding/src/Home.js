@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PokemonList from './PokemonList';
 import Pagination from './Pagination';
-import Title from './Title';
 import Spinner from './Spinner';
 
 import axios from 'axios';
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
-  const [title] = useState('Pokedex');
   const [page, setPage] = useState('https://pokeapi.co/api/v2/pokemon/');
   const [nextPage, setNextPage] = useState();
   const [prevPage, setPrevPage] = useState();
@@ -16,16 +14,19 @@ export default function Home() {
 
   useEffect(() => {
     let cancel;
-    axios.get(page, {
-      cancelToken: new axios.CancelToken(c => cancel = c)
-    })
-    .then(res => {
-      setLoading(false);
-      setPokemons(res.data.results.map(pokemon => pokemon));
-      setNextPage(res.data.next);
-      setPrevPage(res.data.previous);
-    })
-    return () => cancel();
+    const fetchData = async () => {
+      axios.get(page, {
+        cancelToken: new axios.CancelToken(c => cancel = c)
+      })
+      .then(res => {
+        setLoading(false);
+        setPokemons(res.data.results.map(pokemon => pokemon));
+        setNextPage(res.data.next);
+        setPrevPage(res.data.previous);
+      })
+      return () => cancel();
+    }
+    fetchData();
   }, [page]);
 
   function gotoNextPage() {
@@ -35,12 +36,10 @@ export default function Home() {
   function gotoPrevPage() {
     setPage(prevPage);
   }
-
   if (loading) return <Spinner />;
 
   return (
     <>
-      <Title title={title} />
       <PokemonList pokemons={pokemons} setPokemons={setPokemons} />
       <Pagination
         gotoNextPage={nextPage ? gotoNextPage : null }

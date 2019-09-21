@@ -12,6 +12,7 @@ function App() {
 
   return (
     <div className="container">
+      <h2>Pokedex</h2>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/pokemon/:slug" component={PokemonPage} />
